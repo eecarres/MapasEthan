@@ -40,5 +40,13 @@ namespace MapasEthan2
         {
             this.desplazamientoMaximo = double.Parse(textBox1.Text);
         }
+
+        
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string prueba = comboBox1.SelectedIndex.ToString();
+            MessageBox.Show(prueba);
+        }
     }
 }

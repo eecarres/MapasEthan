@@ -24,28 +24,69 @@ namespace MapasEthan2
         {
             //Creamos la lista de puntos UTM del polígono
             List<double[]> puntosUTMPoligono=new List<double[]>();
+            List<PointLatLng> puntosWGSPoligono = new List<PointLatLng>();
+         // Algoritmo que reordena los puntos. El primero, el de la izquierda del todo, luego sentido horario
+           
+            
+            int utmzone = Utilidades.ZonaUtm(puntosPoligono[0]); // Zona UTM del primer punto definido
+            for (int i = 0; i < puntosPoligono.Count; i++)
+            {
+                puntosUTMPoligono.Add(Utilidades.PasarACartesianas(puntosPoligono[i], utmzone)); // Se añade el punto UTM de cada punto LatLng del polígono
+            }
 
-           
-           
+            // Sacamos el índice del punto 
+            int puntoInicio = 0;
+            double valorAComprobar = puntosUTMPoligono[0][0];
+            for (int i = 0; i < puntosUTMPoligono.Count; i++)
+            {
+                if (puntosUTMPoligono[i][0]<valorAComprobar) // Comprobamos si está a la izquierda de nuestro punto por defecto
+                {
+                    valorAComprobar = puntosUTMPoligono[i][0];
+                    puntoInicio = i;
+                }
+            }
+
+            // Reordenamos el List de puntos WGS con los UTM y el valor del punto más a la izquierda
+           int x=0;
+             int y = 0;
+            for (int i = 0; i < puntosUTMPoligono.Count; i++)
+            {
+                if (puntoInicio + i <puntosUTMPoligono.Count)
+                {
+                     x=puntoInicio+i;
+                    puntosWGSPoligono.Add(PointLatLngAlt.FromUTM(utmzone,puntosUTMPoligono[x][0],puntosUTMPoligono[x][1]));
+                }
+                else
+                {
+
+                    puntosWGSPoligono.Add(PointLatLngAlt.FromUTM(utmzone, puntosUTMPoligono[y][0], puntosUTMPoligono[y][1]));
+                    y++;  
+                }
+            }
+
+
+
+            for (int i = 0; i < puntosWGSPoligono.Count; i++) // Ahora ordenamos los puntos UTM con los WGS ya ordenados (pasando coordenadas)
+            {
+                puntosUTMPoligono[i] = Utilidades.PasarACartesianas(puntosWGSPoligono[i], utmzone);
+            }
+            puntosUTMPoligono.Add(puntosUTMPoligono[0]); // HAcemos full loop de los puntos (último y primero son los mismos)
+
             // Asignamos los valores de las propiedades del polígono y de la operación de division de areas
-            int utmzone= Utilidades.ZonaUtm(puntosPoligono[0]);// Zona UTM por defecto en Cataluña es la 31
+       
             double areaCalculada = 0; // Controla el área que calculamos en cada iteración
             // Empezamos diciendo que máximo queremos 30 hectáreas
             double[] puntoControl = { 0.0, 0.0 }; // El punto que iremos moviendo para dibujar la línea vertical
 
             
              // Se calcula el valor que debe tener cada parcela aproximadamente dado un valor máximo (en el formulario)
-            double areaPoligonoTotal=Utilidades.calcpolygonarea(puntosPoligono)/10000;
+            double areaPoligonoTotal=Utilidades.calcpolygonarea(puntosWGSPoligono)/10000;
             double numeroDePoligonos = areaPoligonoTotal / areaMaxima;
             numeroDePoligonos = Math.Truncate(numeroDePoligonos) + 1;
             areaMaxima =  areaPoligonoTotal/ numeroDePoligonos;
           
-            //Pasamos los puntos del polígono a UTM;
-            for (int i = 0; i < puntosPoligono.Count; i++)
-            { 
-            puntosUTMPoligono.Add( Utilidades.PasarACartesianas(puntosPoligono[i],utmzone)); // Se añade el punto UTM de cada punto LatLng del polígono
-            }
-            puntosUTMPoligono.Add(puntosUTMPoligono[0]);
+           
+            
 
 
             for (int i = 0; i < numeroDePoligonos-1; i++) // el -1 es porque la última vez no hay que hacerlo (el último polígono es el restante)
@@ -226,13 +267,13 @@ namespace MapasEthan2
             return resultado;
         }
         
-        public static void SacaRectas(List<PointLatLng> puntosPoligono)
+        public static void SacaRectas(List<PointLatLng> puntosWGSPoligono)
         {
             listaRectas.Clear();
-            for (int i = 1; i < puntosPoligono.Count; i++)
+            for (int i = 1; i < puntosWGSPoligono.Count; i++)
             {
-                PointLatLng P1 = puntosPoligono[i - 1];
-                PointLatLng P2 = puntosPoligono[i];
+                PointLatLng P1 = puntosWGSPoligono[i - 1];
+                PointLatLng P2 = puntosWGSPoligono[i];
                 Recta recta = new Recta(P1, P2);
                 listaRectas.Add(recta);
             }
