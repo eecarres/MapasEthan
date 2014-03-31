@@ -1,0 +1,16 @@
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\bin\Debug\MapasEthan2.exe.config
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\obj\Debug\MapasEthan2.csprojResolveAssemblyReference.cache
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\obj\Debug\MapasEthan2.Form1.resources
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\obj\Debug\MapasEthan2.Properties.Resources.resources
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\obj\Debug\MapasEthan2.csproj.GenerateResource.Cache
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\bin\Debug\MapasEthan2.exe
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\bin\Debug\MapasEthan2.pdb
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\bin\Debug\GMap.NET.Core.dll
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\bin\Debug\GMap.NET.WindowsForms.dll
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\obj\Debug\MapasEthan2.exe
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\obj\Debug\MapasEthan2.pdb
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\bin\Debug\ProjNet.dll
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\bin\Debug\GeoUtility.dll
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\bin\Debug\GeoUtility.pdb
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\bin\Debug\GeoUtility.xml
+C:\Users\Ethan\Universidad\PFC\C#\MapasEthan2\MapasEthan2\obj\Debug\MapasEthan2.PreferenciasArea.resources
