@@ -14,11 +14,17 @@ namespace MapasEthan2
     {
         public double areaMaxima = 30.0;
         public double desplazamientoMaximo = 0.5;
+        public int opcion = 0;
+        public int franjas = 2;
+
+        
 
 
         public PreferenciasArea()
         {
             InitializeComponent();
+            comboBox1.SelectedIndex = 0;
+            opcion = comboBox1.SelectedIndex;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,8 +51,18 @@ namespace MapasEthan2
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string prueba = comboBox1.SelectedIndex.ToString();
-            MessageBox.Show(prueba);
+            opcion = comboBox1.SelectedIndex;
+            if (opcion == 2 || opcion == 3)
+            {
+                SelectorNumerico selector = new SelectorNumerico();
+                selector.ShowDialog();
+                franjas = selector.franjas;
+            }
+        }
+
+        private void PreferenciasArea_Load(object sender, EventArgs e)
+        {
+ 
         }
     }
 }

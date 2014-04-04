@@ -119,13 +119,11 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Divisiones verticales",
             "Divisiones horizontales",
-            "Division Mixta (Vertical +Horizontal)",
-            "Division Mixta (Horizonal + Vertical)",
-            "División con Recta Vertical",
-            "División con Recta Horizontal"});
-            this.comboBox1.Location = new System.Drawing.Point(101, 190);
+            "Division con seleccion de franjas horizontales",
+            "Division con seleccion de franjas verticales"});
+            this.comboBox1.Location = new System.Drawing.Point(61, 190);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(206, 25);
+            this.comboBox1.Size = new System.Drawing.Size(246, 25);
             this.comboBox1.TabIndex = 7;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -149,6 +147,7 @@
             this.Name = "PreferenciasArea";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Preferencias división áreas";
+            this.Load += new System.EventHandler(this.PreferenciasArea_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

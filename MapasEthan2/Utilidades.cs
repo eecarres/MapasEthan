@@ -114,5 +114,17 @@ namespace MapasEthan2
 
             return solucion;
         }
+
+        public static double[] InterseccionHorizontal(Recta recta1, double[] puntoControl)
+        {
+            
+            double y = puntoControl[1];
+
+            double x = (y - recta1.b) / recta1.a;
+            double[] solucion = { x, y };
+
+            return solucion;
+        }
+
     }
 }

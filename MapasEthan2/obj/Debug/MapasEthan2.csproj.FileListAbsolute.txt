@@ -30,3 +30,4 @@ C:\Users\Ethan\Documents\GitHub\MapasEthan\MapasEthan2\obj\Debug\MapasEthan2.For
 C:\Users\Ethan\Documents\GitHub\MapasEthan\MapasEthan2\obj\Debug\MapasEthan2.PreferenciasArea.resources
 C:\Users\Ethan\Documents\GitHub\MapasEthan\MapasEthan2\obj\Debug\MapasEthan2.Properties.Resources.resources
 C:\Users\Ethan\Documents\GitHub\MapasEthan\MapasEthan2\obj\Debug\MapasEthan2.csproj.GenerateResource.Cache
+C:\Users\Ethan\Documents\GitHub\MapasEthan\MapasEthan2\obj\Debug\MapasEthan2.SelectorNumerico.resources

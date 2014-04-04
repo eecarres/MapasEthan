@@ -139,7 +139,7 @@ namespace MapasEthan2
         {
             gmap.MapProvider = GMap.NET.MapProviders.BingSatelliteMapProvider.Instance; // Seleccionamos el proveedor de mapas
             GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache; // Seleccionamos si guardamos caché o solo online
-            gmap.Zoom=12;
+            gmap.Zoom=16;
             gmap.MaxZoom = 25;
             gmap.Position = new PointLatLng(41.4037486430615, 2.02977776527405); // Seleccionamos la posición que queremos que apunte en el inicio
             
@@ -212,6 +212,7 @@ namespace MapasEthan2
                 MessageBox.Show("Has entrado en el modo Polígono");
             poligonMode = true;
             modoPoligonoToolStripMenuItem.Text = "Salir de Modo Polígono";
+            dividirPoligonoToolStripMenuItem.Enabled = true;
 
                 //Inicializamos una nueva overlay de polugonos y otra de markers:
             
@@ -226,6 +227,7 @@ namespace MapasEthan2
                 MessageBox.Show("Has salido del modo Polígono");
                 poligonMode = false;
                 modoPoligonoToolStripMenuItem.Text = "Modo Polígono";
+                dividirPoligonoToolStripMenuItem.Enabled = false;
                 puntosMarkers.Clear();
             }
         }
@@ -341,6 +343,16 @@ namespace MapasEthan2
 
        private void dividirPoligonoToolStripMenuItem_Click(object sender, EventArgs e)
        {
+           
+       }
+
+       private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+       {
+
+       }
+
+       private void toolStripMenuItem2_Click(object sender, EventArgs e)
+       {
            if (poligonMode)
            {
                poligonMode = false;
@@ -349,29 +361,32 @@ namespace MapasEthan2
 
                PreferenciasArea formulario = new PreferenciasArea();
                formulario.ShowDialog();
-;
-               //if ()
-               //{
-                   
-               //}
-               DivisionPoligono.division( puntosMarkers, listaPoligonos,formulario.areaMaxima,formulario.desplazamientoMaximo);
+               switch (formulario.opcion)
+               {
+                   case 0: DivisionPoligono.divisionVertical(puntosMarkers, listaPoligonos, formulario.areaMaxima, formulario.desplazamientoMaximo);
+                       break;
+                   case 1: DivisionPoligono.divisionHorizontal(puntosMarkers, listaPoligonos, formulario.areaMaxima, formulario.desplazamientoMaximo);
+                       break;
+                   case 2: DivisionPoligono.divisionVertical(puntosMarkers, listaPoligonos, formulario.areaMaxima, formulario.desplazamientoMaximo, formulario.franjas);
+                       break;
+                   case 3: DivisionPoligono.divisionHorizontal(puntosMarkers, listaPoligonos, formulario.areaMaxima, formulario.desplazamientoMaximo, formulario.franjas);
+                       break;
+
+
+               }
 
                //Borramos la overlay actual
                gmap.Overlays.Clear();
                GMapOverlay overlayPoligonos = new GMapOverlay();
-               for (int i = 0; i < listaPoligonos.Count; i++)
+               for (int i = 1; i < listaPoligonos.Count; i++)
                {
-                   gmap.Overlays.Clear();   
+                   gmap.Overlays.Clear();
                    overlayPoligonos.Polygons.Add(listaPoligonos[i]);
                    gmap.Overlays.Add(overlayPoligonos);
-                   
+
                    gmap.Refresh();
 
-                  // MessageBox.Show("El polígono " + (i + 1));
-
-                   
-                   
-                   gmap.Refresh();
+                   //MessageBox.Show("El polígono " + (i ));
                }
                puntosMarkers.Clear();
            }
@@ -379,6 +394,11 @@ namespace MapasEthan2
            {
                MessageBox.Show("Define primero un polígono");
            }
+       }
+
+       private void divisiónConRectaToolStripMenuItem_Click(object sender, EventArgs e)
+       {
+           MessageBox.Show("Coming!");
        }
 
     }
