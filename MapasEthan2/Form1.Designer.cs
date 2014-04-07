@@ -32,7 +32,11 @@
             this.gmap = new GMap.NET.WindowsForms.GMapControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modoPoligonoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.dividirPoligonoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.divisiónConRectaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.numeroDePuntosMarkersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrarPolígonoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.numeroOverlaysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,10 +44,6 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_Area = new System.Windows.Forms.Label();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.divisiónConRectaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,6 +74,7 @@
             this.gmap.Size = new System.Drawing.Size(1482, 1045);
             this.gmap.TabIndex = 0;
             this.gmap.Zoom = 3D;
+            this.gmap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gmap_KeyDown);
             this.gmap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gmap_MouseClick);
             this.gmap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gmap_MouseDown);
             this.gmap.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gmap_MouseMove);
@@ -91,7 +92,7 @@
             this.borrarPolígonoToolStripMenuItem,
             this.numeroOverlaysToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(255, 158);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(255, 136);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // modoPoligonoToolStripMenuItem
@@ -100,6 +101,11 @@
             this.modoPoligonoToolStripMenuItem.Size = new System.Drawing.Size(254, 24);
             this.modoPoligonoToolStripMenuItem.Text = "Modo Poligono";
             this.modoPoligonoToolStripMenuItem.Click += new System.EventHandler(this.modoPoligonoToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(251, 6);
             // 
             // dividirPoligonoToolStripMenuItem
             // 
@@ -111,6 +117,25 @@
             this.dividirPoligonoToolStripMenuItem.Size = new System.Drawing.Size(254, 24);
             this.dividirPoligonoToolStripMenuItem.Text = "Dividir Poligono";
             this.dividirPoligonoToolStripMenuItem.Click += new System.EventHandler(this.dividirPoligonoToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(200, 24);
+            this.toolStripMenuItem2.Text = "División estándar";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // divisiónConRectaToolStripMenuItem
+            // 
+            this.divisiónConRectaToolStripMenuItem.Name = "divisiónConRectaToolStripMenuItem";
+            this.divisiónConRectaToolStripMenuItem.Size = new System.Drawing.Size(200, 24);
+            this.divisiónConRectaToolStripMenuItem.Text = "División con Recta";
+            this.divisiónConRectaToolStripMenuItem.Click += new System.EventHandler(this.divisiónConRectaToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(251, 6);
             // 
             // numeroDePuntosMarkersToolStripMenuItem
             // 
@@ -176,30 +201,6 @@
             this.lbl_Area.Size = new System.Drawing.Size(13, 19);
             this.lbl_Area.TabIndex = 4;
             this.lbl_Area.Text = "-";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(251, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(251, 6);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(200, 24);
-            this.toolStripMenuItem2.Text = "División estándar";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // divisiónConRectaToolStripMenuItem
-            // 
-            this.divisiónConRectaToolStripMenuItem.Name = "divisiónConRectaToolStripMenuItem";
-            this.divisiónConRectaToolStripMenuItem.Size = new System.Drawing.Size(200, 24);
-            this.divisiónConRectaToolStripMenuItem.Text = "División con Recta";
-            this.divisiónConRectaToolStripMenuItem.Click += new System.EventHandler(this.divisiónConRectaToolStripMenuItem_Click);
             // 
             // Form1
             // 

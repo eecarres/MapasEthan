@@ -30,6 +30,14 @@ namespace MapasEthan2
         int numOverPolygons = 0;
 
         bool poligonMode = false;
+        bool modoRecta = false;
+
+        Recta rectaDivisoria;
+
+        // Puntos de la recta de division
+
+        PointLatLng puntoRecta1 = new PointLatLng(0.0, 0.0);
+        PointLatLng puntoRecta2 = new PointLatLng(0.0, 0.0);
         
         //Generamos la overlay que usaremos para los puntos, y la lista de puntos que contiene (puntos en formato PointLatLng)
 
@@ -238,13 +246,110 @@ namespace MapasEthan2
         {
             if (poligonMode)
             {
-                
+
                 // Generamos el punto referenciado a la pantalla de la aplicacion
                 Point puntoPantalla = new Point(Cursor.Position.X, Cursor.Position.Y); // puntoPantalla es el punto en absolutas
-                puntoPantalla=gmap.PointToClient(puntoPantalla); // lo pasamos a relativas con el metodo PointToClient
+                puntoPantalla = gmap.PointToClient(puntoPantalla); // lo pasamos a relativas con el metodo PointToClient
 
-                GeneraPoligono(listaOverlaysMarkers[numOverMarkers-1], listaOverlaysPolygons[numOverPolygons-1], markers,puntosMarkers, puntoPantalla,listaPoligonos[numOverPolygons-1], lbl_Area);
-               
+                GeneraPoligono(listaOverlaysMarkers[numOverMarkers - 1], listaOverlaysPolygons[numOverPolygons - 1], markers, puntosMarkers, puntoPantalla, listaPoligonos[numOverPolygons - 1], lbl_Area);
+
+            }
+
+            if (modoRecta) // Generamos la recta necesaria para dividir el polígono
+            {
+                Point puntoPantalla = new Point(Cursor.Position.X, Cursor.Position.Y); // puntoPantalla es el punto en absolutas
+                puntoPantalla = gmap.PointToClient(puntoPantalla);
+                if (puntoRecta1.Lat == 0.0)
+                {
+                    puntoRecta1 = gmap.FromLocalToLatLng(puntoPantalla.X, puntoPantalla.Y);
+
+                }
+                else
+                {
+                    puntoRecta2 = gmap.FromLocalToLatLng(puntoPantalla.X, puntoPantalla.Y);
+
+                    modoRecta = false;
+
+                    // Dibujamos la recta y sus dos puntos en el mapa
+                    GMapOverlay overlayRecta = new GMapOverlay();
+                    GMarkerGoogle markerRecta1 = new GMarkerGoogle(puntoRecta1, GMarkerGoogleType.red);
+                    GMarkerGoogle markerRecta2 = new GMarkerGoogle(puntoRecta2, GMarkerGoogleType.green);
+                    overlayRecta.Markers.Add(markerRecta1);
+                    overlayRecta.Markers.Add(markerRecta2);
+                    gmap.Overlays.Add(overlayRecta);
+                    gmap.UpdateMarkerLocalPosition(markerRecta1);
+                    gmap.UpdateMarkerLocalPosition(markerRecta2);
+                    List<PointLatLng> puntosRuta = new List<PointLatLng>();
+                    puntosRuta.Add(puntoRecta1);
+                    puntosRuta.Add(puntoRecta2);
+                    GMapRoute Ruta = new GMapRoute(puntosRuta, "ruta");
+
+                    GMapOverlay overlayRuta = new GMapOverlay();
+                    overlayRuta.Routes.Add(Ruta);
+
+                    gmap.Overlays.Add(overlayRuta);
+
+                    rectaDivisoria = new Recta(puntoRecta1, puntoRecta2);
+
+                    gmap.Refresh();
+                    MessageBox.Show("Recta definida");
+
+                    // Hay que encontrar los dos polígonos y enviar cada uno al divisor
+
+                    List<List<PointLatLng>> resultado = DivisorRecta.Separacion(puntosMarkers, rectaDivisoria, listaPoligonos);
+
+
+
+
+                    gmap.Refresh();
+
+                    // Pedimos al usuario cómo quiere dividir el área del primer polígono
+                    PreferenciasArea formPoli1 = new PreferenciasArea();
+                    formPoli1.Text = "Propiedades polígono 1";
+                    formPoli1.ShowDialog();
+                    switch (formPoli1.opcion)
+                    {
+                        case 0: DivisionPoligono.divisionVertical(resultado[0], listaPoligonos, formPoli1.areaMaxima, formPoli1.desplazamientoMaximo);
+                            break;
+                        case 1: DivisionPoligono.divisionHorizontal(resultado[0], listaPoligonos, formPoli1.areaMaxima, formPoli1.desplazamientoMaximo);
+                            break;
+                        case 2: DivisionPoligono.divisionVertical(resultado[0], listaPoligonos, formPoli1.areaMaxima, formPoli1.desplazamientoMaximo, formPoli1.franjas);
+                            break;
+                        case 3: DivisionPoligono.divisionHorizontal(resultado[0], listaPoligonos, formPoli1.areaMaxima, formPoli1.desplazamientoMaximo, formPoli1.franjas);
+                            break;
+                    }
+
+                    // Pedimos al usuario cómo quiere dividir el área del segundo polígono
+                    PreferenciasArea formPoli2 = new PreferenciasArea();
+                    formPoli2.Text = "Propiedades polígono 2";
+                    formPoli2.ShowDialog();
+                    switch (formPoli2.opcion)
+                    {
+                        case 0: DivisionPoligono.divisionVertical(resultado[1], listaPoligonos, formPoli2.areaMaxima, formPoli2.desplazamientoMaximo);
+                            break;
+                        case 1: DivisionPoligono.divisionHorizontal(resultado[1], listaPoligonos, formPoli2.areaMaxima, formPoli2.desplazamientoMaximo);
+                            break;
+                        case 2: DivisionPoligono.divisionVertical(resultado[1], listaPoligonos, formPoli2.areaMaxima, formPoli2.desplazamientoMaximo, formPoli2.franjas);
+                            break;
+                        case 3: DivisionPoligono.divisionHorizontal(resultado[1], listaPoligonos, formPoli2.areaMaxima, formPoli2.desplazamientoMaximo, formPoli2.franjas);
+                            break;
+                    }
+
+                    //Borramos la overlay actual
+                    gmap.Overlays.Clear();
+                    GMapOverlay overlayPoli = new GMapOverlay();
+                    for (int i = 1; i < listaPoligonos.Count; i++)
+                    {
+                        gmap.Overlays.Clear();
+                        overlayPoli.Polygons.Add(listaPoligonos[i]);
+                        gmap.Overlays.Add(overlayPoli);
+
+                        gmap.Refresh();
+
+                    }
+
+                }
+
             }
         }
 
@@ -371,8 +476,6 @@ namespace MapasEthan2
                        break;
                    case 3: DivisionPoligono.divisionHorizontal(puntosMarkers, listaPoligonos, formulario.areaMaxima, formulario.desplazamientoMaximo, formulario.franjas);
                        break;
-
-
                }
 
                //Borramos la overlay actual
@@ -398,8 +501,22 @@ namespace MapasEthan2
 
        private void divisiónConRectaToolStripMenuItem_Click(object sender, EventArgs e)
        {
-           MessageBox.Show("Coming!");
+           if (modoRecta==false)
+           {
+               poligonMode = false;
+               modoPoligonoToolStripMenuItem.Text = "Modo Polígono";
+               modoRecta = true;
+               MessageBox.Show("Define la recta: click en sus dos puntos");
+           }
+           
        }
+
+       private void gmap_KeyDown(object sender, KeyEventArgs e)
+       {
+           
+       }
+
+       
 
     }
 }

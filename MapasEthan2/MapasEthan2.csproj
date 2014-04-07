@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DivisionPoligono.cs" />
+    <Compile Include="DivisorRecta.cs" />
     <Compile Include="PointLatLngAlt.cs" />
     <Compile Include="PreferenciasArea.cs">
       <SubType>Form</SubType>
