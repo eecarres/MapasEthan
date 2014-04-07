@@ -44,6 +44,8 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_Area = new System.Windows.Forms.Label();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,9 +92,11 @@
             this.toolStripSeparator2,
             this.numeroDePuntosMarkersToolStripMenuItem,
             this.borrarPolígonoToolStripMenuItem,
-            this.numeroOverlaysToolStripMenuItem});
+            this.numeroOverlaysToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.toolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(255, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(255, 188);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // modoPoligonoToolStripMenuItem
@@ -202,6 +206,18 @@
             this.lbl_Area.TabIndex = 4;
             this.lbl_Area.Text = "-";
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(251, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(254, 24);
+            this.toolStripMenuItem1.Text = "RESET";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -241,6 +257,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem divisiónConRectaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 
