@@ -82,7 +82,8 @@ namespace MapasEthan2
             // Se añade el punto al polígono
             poligono.Points.Add(puntoMapa);
             //Se genera el marcador en el punto y se añade el marcador al overlay
-            GMarkerGoogle marker = new GMarkerGoogle(puntoMapa, new Bitmap("C:\\Users\\Ethan\\Universidad\\PFC\\C#\\MapasEthan2\\MapasEthan2\\HemavMarker.png"));
+            Bitmap hm = new Bitmap(global::MapasEthan2.Properties.Resources.HemavMarker);
+            GMarkerGoogle marker = new GMarkerGoogle(puntoMapa, hm);
             overlayMarkers.Markers.Add(marker);
             markers.Add(marker);
             if (listaPuntos.Count > 2)
