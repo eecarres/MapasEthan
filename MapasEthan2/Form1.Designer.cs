@@ -40,12 +40,12 @@
             this.numeroDePuntosMarkersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrarPolígonoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.numeroOverlaysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_Area = new System.Windows.Forms.Label();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,7 +73,7 @@
             this.gmap.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gmap.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gmap.ShowTileGridLines = false;
-            this.gmap.Size = new System.Drawing.Size(1482, 1045);
+            this.gmap.Size = new System.Drawing.Size(1262, 673);
             this.gmap.TabIndex = 0;
             this.gmap.Zoom = 3D;
             this.gmap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gmap_KeyDown);
@@ -96,7 +96,7 @@
             this.toolStripSeparator3,
             this.toolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(255, 188);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(255, 166);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // modoPoligonoToolStripMenuItem
@@ -162,50 +162,6 @@
             this.numeroOverlaysToolStripMenuItem.Text = "NumeroOverlays";
             this.numeroOverlaysToolStripMenuItem.Click += new System.EventHandler(this.numeroOverlaysToolStripMenuItem_Click);
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(12, 981);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(84, 23);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Markers";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(12, 1010);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(89, 23);
-            this.checkBox2.TabIndex = 2;
-            this.checkBox2.Text = "Polygons";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 959);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 19);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Area:";
-            // 
-            // lbl_Area
-            // 
-            this.lbl_Area.AutoSize = true;
-            this.lbl_Area.Location = new System.Drawing.Point(58, 959);
-            this.lbl_Area.Name = "lbl_Area";
-            this.lbl_Area.Size = new System.Drawing.Size(13, 19);
-            this.lbl_Area.TabIndex = 4;
-            this.lbl_Area.Text = "-";
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
@@ -218,11 +174,55 @@
             this.toolStripMenuItem1.Text = "RESET";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(12, 37);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(84, 23);
+            this.checkBox1.TabIndex = 1;
+            this.checkBox1.Text = "Markers";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(12, 66);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(89, 23);
+            this.checkBox2.TabIndex = 2;
+            this.checkBox2.Text = "Polygons";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 19);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Area:";
+            // 
+            // lbl_Area
+            // 
+            this.lbl_Area.AutoSize = true;
+            this.lbl_Area.Location = new System.Drawing.Point(58, 15);
+            this.lbl_Area.Name = "lbl_Area";
+            this.lbl_Area.Size = new System.Drawing.Size(13, 19);
+            this.lbl_Area.TabIndex = 4;
+            this.lbl_Area.Text = "-";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1482, 1045);
+            this.ClientSize = new System.Drawing.Size(1262, 673);
             this.Controls.Add(this.lbl_Area);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBox2);
@@ -233,6 +233,7 @@
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "MapasEthan V2";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);

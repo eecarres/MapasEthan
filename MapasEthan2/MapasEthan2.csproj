@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\IconoMapa.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="GeoUtility">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Mission Planner\GeoUtility.dll</HintPath>
@@ -115,6 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="HemavMarker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\map30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoMapa.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
